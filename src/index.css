@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #081D2B;
+  --color-royal: #123B55;
+  --color-gold: #D9B978;
+  --color-gold-hover: #C8A55F;
+  --color-canvas: #F5F7FA;
+
+  --font-display: "Plus Jakarta Sans", "Noto Sans Devanagari", system-ui, -apple-system, sans-serif;
+  --font-sans: "DM Sans", "Noto Sans Devanagari", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    scroll-padding-top: 5.5rem;
+    overflow-x: clip;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #F5F7FA;
+    color: #081D2B;
+    overflow-x: clip;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+@keyframes subtleMeshShift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-1.5%, 1.5%, 0) scale(1.03);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.hero-mesh-motion {
+  animation: subtleMeshShift 18s ease-in-out infinite;
+}
+
+@keyframes buttonSheenSweep {
+  0% {
+    transform: translateX(-140%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(260%) skewX(-20deg);
+  }
+}
+
+.btn-sheen-layer {
+  transform: translateX(-140%) skewX(-20deg);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .btn-sheen-layer,
+.btn-sheen-trigger:hover .btn-sheen-layer {
+  transform: translateX(260%) skewX(-20deg);
+}
+
+.btn-sheen-auto {
+  animation: buttonSheenSweep 4.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  animation-delay: 1.5s;
+}
+
+@keyframes brandGoldShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.brand-gold-shimmer {
+  background-image: linear-gradient(
+    110deg,
+    #ffffff 0%,
+    #ffffff 36%,
+    #f5e1ae 48%,
+    #d9b978 54%,
+    #ffffff 66%,
+    #ffffff 100%
+  );
+  background-size: 240% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: brandGoldShimmer 5.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-mesh-motion,
+  .btn-sheen-auto,
+  .brand-gold-shimmer {
+    animation: none;
+  }
+
+  .brand-gold-shimmer {
+    background-image: none;
+    color: #ffffff;
+  }
+
+  .btn-sheen-layer {
+    display: none;
+  }
+}

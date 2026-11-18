@@ -1,0 +1,6 @@
+{
+  "name": "Kishan Plumbing Works",
+  "description": "48+ Years of Experience. Genuine Pricing. Complete Trust. Complete plumbing and sanitary solutions for homes, apartments, and buildings in Kanpur Nagar.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
